@@ -1,33 +1,23 @@
-import express, { request, response } from 'express'
+import express, { request, response } from "express";
 
-const app = express()
+const app = express();
+app.use(express.json());
 
-const users = []
+const users = [];
 
-app.post('/user', (req, res) => {
+app.post("/user", (req, res) => {
+  users.push(req.body);
 
-    console.log(req)
+  res.status(201).json(req.body);
+});
 
-    res.send('ok post')
+app.get("/user", (req, res) => {
+  res.json(users)
+  
+    res.status(200);
+});
 
-})
-
-
-app.get('/user', (req, res) => {
-    res.send('Ok, deu bom')
-}) 
-
-app.listen(3000)
+app.listen(3000);
 // Criar nossa api de users
 // listar users
 // Listar users
-
-
-
-
-
-
-
-
-
-
