@@ -1,0 +1,7 @@
+http metodos
+
+get -> listar
+post -. criar
+put -> editar vários
+patch -> editar um
+delete -. deletar 
