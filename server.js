@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 const app = express();
 app.use(express.json());
 
-
+// Mandar dados para o banco
 app.post("/user", async (req, res) => {
   await prisma.user.create({
     data:{
@@ -18,7 +18,7 @@ app.post("/user", async (req, res) => {
 
   res.status(201).json(req.body);
 });
-
+// Pega os dados do Banco e listar
 app.get("/user", async (req, res) => {
 
 let users = []
@@ -33,7 +33,7 @@ if(req.query){
 }
     res.status(200).json(users);
 });
-
+//Mandar uma atualização para o banco de dados
 app.put("/user/:id", async (req, res) => {
   await prisma.user.update({
     where: {
@@ -48,6 +48,7 @@ app.put("/user/:id", async (req, res) => {
   res.status(201).json(req.body);
 });
 
+//deletar uma linha no banco de dados
 app.delete('/user/:id', async (req, res) => {
   await prisma.user.delete({
     where: {
@@ -61,11 +62,4 @@ app.delete('/user/:id', async (req, res) => {
 
 app.listen(3000);
 
-
-
-
-
-
-// Criar nossa api de users
-// listar users
-// Criar users
+//Mandar, pegar, atualizar e deletar [CRUD]
